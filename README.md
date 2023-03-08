@@ -1,6 +1,6 @@
-# ucore-main
+# ucore-hci
 
-[![build-ucore](https://github.com/bsherman/ucore-main/actions/workflows/build.yml/badge.svg)](https://github.com/bsherman/ucore-main/actions/workflows/build.yml)
+[![build-ucore](https://github.com/bsherman/ucore-hci/actions/workflows/build.yml/badge.svg)](https://github.com/bsherman/ucore-hci/actions/workflows/build.yml)
 
 
 ## What is this?
@@ -34,4 +34,4 @@ To rebase an Fedora CoreOS machine to the latest release (stable):
 
 These images are signed with sisgstore's [cosign](https://docs.sigstore.dev/cosign/overview/). You can verify the signature by downloading the `cosign.pub` key from this repo and running the following command:
 
-    cosign verify --key cosign.pub ghcr.io/bsherman/ucore-main
+    cosign verify --key cosign.pub ghcr.io/bsherman/ucore-hci
