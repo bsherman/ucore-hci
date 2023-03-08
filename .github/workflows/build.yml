@@ -27,7 +27,7 @@ jobs:
       fail-fast: false
       matrix:
         image_name:
-          - ucore-main
+          - ucore-hci
         coreos_version:
           - stable
         include:
@@ -104,7 +104,7 @@ jobs:
             ${{ matrix.image_name }}
           labels: |
             org.opencontainers.image.title=${{ matrix.image_name }}
-            org.opencontainers.image.description=Customized Fedora CoreOS with distrobox, automatic updates, both moby and podman, and some goodies
+            org.opencontainers.image.description=Fedora CoreOS customized for use as HCI (hyper-converged infrastructure) host with livirtd and ZFS
             io.artifacthub.package.readme-url=https://raw.githubusercontent.com/${{ github.repository_owner }}/${{ matrix.image_name }}/main/README.md
       # Build image using Buildah action
       - name: Build Image

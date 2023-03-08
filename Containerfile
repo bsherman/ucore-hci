@@ -1,41 +1,23 @@
 ARG COREOS_VERSION=${COREOS_VERSION:-stable}
 
-FROM quay.io/fedora/fedora-coreos:${COREOS_VERSION}
+FROM ghcr.io/bsherman/ucore-main:${COREOS_VERSION}
+ARG COREOS_VERSION
 
-COPY etc /etc
-RUN mkdir -p /var/lib/duperemove
-
-# Remove undesired packages
-RUN rpm-ostree override remove \
-toolbox \
-zincati
+# copy in all separately built RPM files
+COPY --from=ghcr.io/bsherman/ucore-kmods:${COREOS_VERSION} / /tmp/rpms
 
 # Install needed packages
-RUN cd /etc/yum.repos.d/ \
-    && curl -LO https://pkgs.tailscale.com/stable/fedora/tailscale.repo \
+RUN cd /tmp/rpms \
     && rpm-ostree install \
-        cockpit-system \
-        cockpit-ostree \
-        cockpit-podman \
-        cockpit-networkmanager \
-        cockpit-storaged \
-        distrobox \
-        docker-compose \
-        duperemove \
-        firewalld \
-        podman \
-        podman-compose \
-        tailscale \
-        wget \
-        wireguard-tools \
-        xdg-dbus-proxy \
-        xdg-user-dirs \
-    && rm tailscale.repo
+        cockpit-machines \
+        libvirt-daemon-kvm \
+        *.rpm \
+    && git clone https://github.com/45drives/cockpit-zfs-manager.git \
+    && cp -r cockpit-zfs-manager/zfs /usr/share/cockpit
+
 
 # Finalize
-RUN sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
-    sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=60s/' /etc/systemd/user.conf && \
-    sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=60s/' /etc/systemd/system.conf && \
-    systemctl enable rpm-ostreed-automatic.timer && \
-    rpm-ostree cleanup -m && \
-    ostree container commit
+RUN rm -fr /tmp/* \
+    && rm -fr /var/lib/* \
+    && rpm-ostree cleanup -m \
+    && ostree container commit
