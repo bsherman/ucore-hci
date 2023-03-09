@@ -3,6 +3,8 @@ ARG COREOS_VERSION=${COREOS_VERSION:-stable}
 FROM ghcr.io/bsherman/ucore-main:${COREOS_VERSION}
 ARG COREOS_VERSION
 
+COPY etc /etc
+
 # copy in all separately built RPM files
 COPY --from=ghcr.io/bsherman/ucore-kmods:${COREOS_VERSION} / /tmp/rpms
 
