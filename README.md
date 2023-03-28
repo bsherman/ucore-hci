@@ -16,7 +16,7 @@ This is an OCI image of [ucore-os/ucore](https://github.com/ublue-os/ucore) ([Fe
   - ZFS built via [ucore-kmods](https://github.com/bsherman/ucore-kmods)
   - libvirtd (to host virtual machines)
   - cockpit-machines (to manage virtual machines)
-  - [cockpit-zfs-manager](https://github.com/45Drives/cockpit-zfs-manager) (to manage ZFS storage)
+  - [cockpit-zfs-manager](https://github.com/bsherman/cockpit-zfs-manager) (to manage ZFS storage)
 
 
 This image should be suitable for use on bare metal or in a virtual machines where you wish to run containerized workloads, host virtual machines, or use ZFS. It uses significantly more disk space than [ucore-main](https://github.com/bsherman/ucore-main), so check that out if you don't need to host VMs or use  ZFS.
