@@ -15,7 +15,7 @@ RUN cd /tmp/rpms \
         cockpit-machines \
         libvirt-daemon-kvm \
         *.rpm \
-    && git clone https://github.com/45drives/cockpit-zfs-manager.git \
+    && git clone https://github.com/bsherman/cockpit-zfs-manager.git \
     && cp -r cockpit-zfs-manager/zfs /usr/share/cockpit
 
 
