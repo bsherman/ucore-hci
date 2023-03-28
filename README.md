@@ -5,13 +5,13 @@
 
 ## What is this?
 
-This is an OCI image of [Fedora CoreOS](https://getfedora.org/coreos/) customized for use as HCI (hyper-converged infrastructure) host with livirtd and ZFS.
+This is an OCI image of [ucore-os/ucore](https://github.com/ublue-os/ucore) ([Fedora CoreOS](https://getfedora.org/coreos/)) customized for use as HCI (hyper-converged infrastructure) host with livirtd and ZFS.
 
 ### WARNING: not yet tested
 
 ## Features
 
-- Start with [ucore-main](https://github.com/bsherman/ucore-main) as a base and get all its goodness
+- Start with [ublue-os/ucore](https://github.com/ublue-os/ucore) as a base and get all its goodness
 - add some packages:
   - ZFS built via [ucore-kmods](https://github.com/bsherman/ucore-kmods)
   - libvirtd (to host virtual machines)
