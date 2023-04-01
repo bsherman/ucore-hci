@@ -2,6 +2,11 @@
 
 [![build-ucore](https://github.com/bsherman/ucore-hci/actions/workflows/build.yml/badge.svg)](https://github.com/bsherman/ucore-hci/actions/workflows/build.yml)
 
+## WARNING: STOP USING ME
+
+Builds will NO LONGER be generated as all development efforts for uCore have moved to:
+
+https://github.com/ublue-os/ucore
 
 ## What is this?
 
